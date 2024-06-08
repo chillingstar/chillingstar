@@ -18,12 +18,17 @@ body {
     align-items: center;
     width: 60vw;
     position: absolute;
-    height: calc(95vh - 80px);
     top: 7%;
     left: 22%;
     background-color: rgba(180, 180, 180, 0.5);
     border: 1px solid #ffffff;
     border-radius: 25px;
+}
+
+.socials {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
 #profile-picture {
