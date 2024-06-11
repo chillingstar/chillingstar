@@ -1,13 +1,19 @@
 function playMusic() {
-    var audio = [{
-        "flowerdance": "./audio/fd.mp3"
-    }]
+    document.querySelector('#music').style.display = 'none';
+    var audio = {
+        "flowerdance": "./audio/fd.mp3",
+        "rickroll": "./audio/rr.mp3",
+        "luvletter": "./audio/ll.mp3",
+        "perfectblue": "./audio/pb.mp3",
+    };
 
-    var randomIndex = Math.floor(Math.random() * audio.length);
-    var randomAudio = audio[randomIndex].flowerdance;
-    var audio = new Audio(randomAudio);
-    audio.play();
+    var songs = Object.keys(audio);
+    var randomSong = songs[Math.floor(Math.random() * songs.length)];
+    var audioElement = new Audio(audio[randomSong]);
+
+    audioElement.play();
 }
+
 document.querySelector('.github img').addEventListener('mouseover', function() {
     this.src = './images/github_white.svg';
 });
