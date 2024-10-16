@@ -44,4 +44,4 @@
 
 - I love green tea 🍵
 - I enjoy playing <a href="https://osu.ppy.sh/" style="color: #f90ef2;">osu!</a> and <a href="https://counter-strike.net/"><span style="color: #0e34df;">Counter</span>-<span style="color: #ee911b">Strike</span></a> series.
-- I love watching romance animes.
+- I love watching romance animes (especially Roshidere!).
