@@ -98,8 +98,8 @@ export default function Home() {
                                         <CardBody>
                                             <p>Ram: 16GB DDR4 3200 Mhz</p>
                                             <p>Storage: 512GB HDD + 256GB SSD</p>
-                                            <p>GPU: <span className='inline-flex items-center'><Image src={svgUrl(siNvidia)} alt={siNvidia.title} radius='none' width={16} height={16} className={getIconClass(theme)} />NVIDIA GeForce GTX 1050</span></p>
-                                            <p>Operating System: <span className="inline-flex items-center"><Image src={svgUrl(siArchlinux)} alt={siArchlinux.title} radius='none' width={16} height={16} className={getIconClass(theme)} /> Arch Linux</span></p>
+                                            <p>GPU: <span className='inline-flex items-center'><Image src={svgUrl(siNvidia)} alt={siNvidia.title} radius='none' width={16} height={16} className={getIconClass(theme)} /><span className='ml-1'>NVIDIA GeForce GTX 1050</span></span></p>
+                                            <p>Operating System: <span className='inline-flex items-center'><Image src={svgUrl(siArchlinux)} alt={siArchlinux.title} radius='none' width={16} height={16} className={getIconClass(theme)} /><span className='ml-1'>Archlinux</span></span></p>
                                         </CardBody>
                                     </Card>
                                     <Spacer />
@@ -110,7 +110,7 @@ export default function Home() {
                                             <p>Processor: ARM Unisoc @ 1.61 GHz </p>
                                             <p>Ram: 8GB</p>
                                             <p>Storage: 256GB</p>
-                                            <p>Operating System: <span className='inline-flex items-center'><Image src={svgUrl(siAndroid)} alt={siAndroid.title} radius='none' width={16} height={16} className={getIconClass(theme)} />Android 13</span></p>
+                                            <p>Operating System: <span className='inline-flex items-center'><Image src={svgUrl(siAndroid)} alt={siAndroid.title} radius='none' width={16} height={16} className={getIconClass(theme)} /><span className='ml-1'>Android 13</span></span></p>
                                         </CardBody>
                                     </Card>
                                 </div>
