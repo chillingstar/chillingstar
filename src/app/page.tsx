@@ -3,37 +3,13 @@
 import { Accordion, AccordionItem, Button, Card, CardBody, CardFooter, CardHeader, Image, Spacer, Spinner } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { MoonIcon, SunIcon, NotebookPen, Hammer, Info, MessageCircle } from 'lucide-react';
-import { siTypescript, siJavascript, siNodedotjs, siNextdotjs, siReact, siArchlinux, siNvidia, siAndroid, siGit, siGithub, siDocker, siDavinciresolve, siTelegram, siDiscord, siOsu, siYoutube, siSteam, siTiktok, siBun, siNextui, siCloudflarepages, siVercel } from 'simple-icons/icons';
+import { siTypescript, siJavascript, siNodedotjs, siNextdotjs, siReact, siArchlinux, siNvidia, siAndroid, siGit, siGithub, siDocker, siDavinciresolve, siTelegram, siDiscord, siOsu, siYoutube, siSteam, siTiktok, siBun, siNextui, siVercel } from 'simple-icons/icons';
 
 const icons = [siTypescript, siJavascript, siNodedotjs, siNextdotjs, siReact, siGit, siGithub, siDocker, siDavinciresolve];
 const svgUrl = (icon: { svg: string }) => `data:image/svg+xml;utf8,${encodeURIComponent(icon.svg)}`;
-
 const getIconClass = (theme: string) => theme === 'dark' ? 'invert' : '';
+export const GitHubAvatar = "https://avatars.githubusercontent.com/u/72331969";
 
-/**
- * The `Home` component is the main page of the application. It handles theme toggling between light and dark modes
- * based on the system's color scheme preference. It also displays a card with various sections including an avatar,
- * information about the developer, technologies and tools used, device specifications, and social media links.
- *
- * @component
- * @returns {JSX.Element} The rendered component.
- *
- * @example
- * ```tsx
- * import Home from './path/to/Home';
- * 
- * function App() {
- *   return <Home />;
- * }
- * ```
- *
- * @remarks
- * - The component uses `useState` to manage the theme and loading state.
- * - The `useEffect` hook is used to set the initial theme based on the system's preference.
- * - The `toggleTheme` function toggles between light and dark themes.
- * - The component includes various UI elements such as `Button`, `Card`, `Accordion`, and `Image`.
- * - Social media buttons open respective links in a new tab.
- */
 export default function Home() {
     const [theme, setTheme] = useState('light');
     const [isLoading, setIsLoading] = useState(true);
@@ -52,6 +28,36 @@ export default function Home() {
         document.documentElement.classList.toggle('light', newTheme === 'light');
     };
 
+    const renderIcon = (icon: { svg: string, title: string }, index: number) => (
+        <Image 
+            key={index}
+            src={svgUrl(icon)} 
+            alt={icon.title}
+            radius='none'
+            width={32} 
+            height={32} 
+            className={getIconClass(theme)}
+            style={{ transition: 'filter 0.3s, transform 0.3s' }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+        />
+    );
+
+    const renderButton = (icon: { svg: string, title: string }, url: string, color: string) => (
+        <Button 
+            variant='shadow' 
+            size='md' 
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = color} 
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = ''} 
+            onClick={() => window.open(url, '_blank')}
+        >
+            <span className='inline-flex items-center'>
+                <Image src={svgUrl(icon)} alt={icon.title} radius='md' width={16} height={16} className={getIconClass(theme)} />
+                <span className='ml-1'>{icon.title}</span>
+            </span>
+        </Button>
+    );
+
     return (
         <main>
             <div className='flex absolute bottom-6 left-1/2 transform -translate-x-1/2'>
@@ -64,7 +70,7 @@ export default function Home() {
                         {isLoading && <Spinner />}
                         <Image 
                             isBlurred
-                            src='https://avatars.githubusercontent.com/u/72331969?s=96'
+                            src={GitHubAvatar}
                             alt='Avatar'
                             width={96}
                             height={96}
@@ -82,20 +88,7 @@ export default function Home() {
                             </AccordionItem>
                             <AccordionItem key={2} aria-label='Technologies & Tools' title={<div className='flex'><Hammer className='mr-1'/> Technologies & Tools</div>}>
                                 <div className='flex justify-center items-center self-center space-x-2'>
-                                    {icons.map((icon, index) => (
-                                        <Image 
-                                            key={index}
-                                            src={svgUrl(icon)} 
-                                            alt={icon.title}
-                                            radius='none'
-                                            width={32} 
-                                            height={32} 
-                                            className={getIconClass(theme)}
-                                            style={{ transition: 'filter 0.3s, transform 0.3s' }}
-                                            onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
-                                            onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-                                        />
-                                    ))}
+                                    {icons.map(renderIcon)}
                                 </div>
                             </AccordionItem>
                             <AccordionItem key={3} aria-label='Info' title={<div className='flex'><Info className='mr-1'/> Info</div>}>
@@ -124,90 +117,13 @@ export default function Home() {
                             </AccordionItem>
                             <AccordionItem key={4} aria-label='Social Media' title={<div className='flex'><MessageCircle className='mr-1'/>Social Media</div>}>
                                 <div className="flex justify-center space-x-2">
-                                    <Button 
-                                        variant='shadow' 
-                                        size='md' 
-                                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#5865F2'} 
-                                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = ''} 
-                                        onClick={() => window.open('https://discordapp.com/users/1245349618905255946', '_blank')}
-                                    >
-                                        <span className='inline-flex items-center'>
-                                            <Image src={svgUrl(siDiscord)} alt={siDiscord.title} radius='md' width={16} height={16} className={getIconClass(theme)} />
-                                            <span className='ml-1'>Discord</span>
-                                        </span>
-                                    </Button>
-                                    <Button 
-                                        variant='shadow' 
-                                        size='md' 
-                                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#26A5E4'} 
-                                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = ''} 
-                                        onClick={() => window.open('https://t.me/Azphyre', '_blank')}
-                                    >
-                                        <span className='inline-flex items-center'>
-                                            <Image src={svgUrl(siTelegram)} alt={siTelegram.title} radius='md' width={16} height={16} className={getIconClass(theme)} />
-                                            <span className='ml-1'>Telegram</span>
-                                        </span>
-                                    </Button>
-                                    <Button 
-                                        variant='shadow' 
-                                        size='md' 
-                                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FF66AA'} 
-                                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = ''} 
-                                        onClick={() => window.open('https://osu.ppy.sh/users/35650471', '_blank')}
-                                    >
-                                        <span className='inline-flex items-center'>
-                                            <Image src={svgUrl(siOsu)} alt={siOsu.title} radius='md' width={16} height={16} className={getIconClass(theme)} />
-                                            <span className='ml-1'>osu!</span>
-                                        </span>
-                                    </Button>
-                                    <Button 
-                                        variant='shadow' 
-                                        size='md' 
-                                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FF0000'} 
-                                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = ''} 
-                                        onClick={() => window.open('https://youtube.com/@itzchillingstar', '_blank')}
-                                    >
-                                        <span className='inline-flex items-center'>
-                                            <Image src={svgUrl(siYoutube)} alt={siYoutube.title} radius='md' width={16} height={16} className={getIconClass(theme)} />
-                                            <span className='ml-1'>YouTube</span>
-                                        </span>
-                                    </Button>
-                                    <Button 
-                                        variant='shadow' 
-                                        size='md' 
-                                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#181717'} 
-                                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = ''} 
-                                        onClick={() => window.open('https://github.com/chillingstar', '_blank')}
-                                    >
-                                        <span className='inline-flex items-center'>
-                                            <Image src={svgUrl(siGithub)} alt={siGithub.title} radius='md' width={16} height={16} className={getIconClass(theme)} />
-                                            <span className='ml-1'>GitHub</span>
-                                        </span>
-                                    </Button>
-                                    <Button 
-                                        variant='shadow' 
-                                        size='md' 
-                                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#000000'} 
-                                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = ''} 
-                                        onClick={() => window.open('https://steamcommunity.com/id/chillingstar', '_blank')}
-                                    >
-                                        <span className='inline-flex items-center'>
-                                            <Image src={svgUrl(siSteam)} alt={siSteam.title} radius='md' width={16} height={16} className={getIconClass(theme)} />
-                                            <span className='ml-1'>Steam</span>
-                                        </span>
-                                    </Button>
-                                    <Button 
-                                        variant='shadow' 
-                                        size='md' 
-                                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2828cf'} 
-                                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = ''} 
-                                        onClick={() => window.open('https://tiktok.com/@notchillingstar', '_blank')}
-                                    >
-                                        <span className='inline-flex items-center'>
-                                            <Image src={svgUrl(siTiktok)} alt={siTiktok.title} radius='md' width={16} height={16} className={getIconClass(theme)} />
-                                            <span className='ml-1'>TikTok</span>
-                                        </span>
-                                    </Button>
+                                    {renderButton(siDiscord, 'https://discordapp.com/users/1245349618905255946', '#5865F2')}
+                                    {renderButton(siTelegram, 'https://t.me/Azphyre', '#26A5E4')}
+                                    {renderButton(siOsu, 'https://osu.ppy.sh/users/35650471', '#FF66AA')}
+                                    {renderButton(siYoutube, 'https://youtube.com/@itzchillingstar', '#FF0000')}
+                                    {renderButton(siGithub, 'https://github.com/chillingstar', '#181717')}
+                                    {renderButton(siSteam, 'https://steamcommunity.com/id/chillingstar', '#000000')}
+                                    {renderButton(siTiktok, 'https://tiktok.com/@notchillingstar', '#2828cf')}
                                 </div>
                             </AccordionItem>
                         </Accordion>
