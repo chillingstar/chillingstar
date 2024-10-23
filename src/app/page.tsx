@@ -122,7 +122,7 @@ export default function Home() {
                                     {renderButton(siOsu, 'https://osu.ppy.sh/users/35650471', '#FF66AA')}
                                     {renderButton(siYoutube, 'https://youtube.com/@itzchillingstar', '#FF0000')}
                                     {renderButton(siGithub, 'https://github.com/chillingstar', '#181717')}
-                                    {renderButton(siSteam, 'https://steamcommunity.com/id/chillingstar', '#000000')}
+                                    {renderButton(siSteam, 'https://steamcommunity.com/id/pleiotaxy', '#000000')}
                                     {renderButton(siTiktok, 'https://tiktok.com/@notchillingstar', '#2828cf')}
                                 </div>
                             </AccordionItem>
