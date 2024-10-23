@@ -65,7 +65,7 @@ export default function Home() {
             </div>
 
             <div className="flex justify-center items-center h-screen">
-                <Card className='max-w-[780px] min-w-[780px]'>
+                <Card className={`max-w-[80%] min-w-[80%]`}>
                     <CardHeader className="flex justify-center">
                         {isLoading && <Spinner />}
                         <Image 
